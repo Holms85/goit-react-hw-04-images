@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
-// import { createPortal } from 'react-dom';
+// import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 import { Overlay, ModalWindow } from './Modal.styled';
 
-// const modalRoot = document.querySelector('#modal-root');
+const modalRoot = document.querySelector('#modal-root');
 
 export default function Modal({ onClose, children }) {
   useEffect(() => {
@@ -26,10 +26,10 @@ export default function Modal({ onClose, children }) {
     }
   };
   
-    return ReactDOM.createPortal(
+    return createPortal(
       <Overlay onClick={handleBackdropClick}>
         <ModalWindow>{children} </ModalWindow>
-      </Overlay>,document.querySelector("#modal-root")
+      </Overlay>,modalRoot
       
     );
   
